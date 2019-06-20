@@ -73,4 +73,12 @@ public class DBConfiguration {
         return "DB connection for PROD Profiles";        
     }
 
+    @Profile("test")
+    @Bean    
+    public String testDatabaseConnection() {
+        System.out.println("DB connection for TEST Profiles");
+        System.out.println(driverClassName);
+        System.out.println(url);
+        return "DB connection for TEST Profiles";        
+    }    
 }
