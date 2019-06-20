@@ -24,11 +24,11 @@ public class CourseController {
     
     @GetMapping("/course")
     String partialHandler() {
-        String response = "";
-        try {
-            response = new ObjectMapper().writeValueAsString(courseService.getList());            
-        } catch (JsonProcessingException  e) {
-        }
+        String response = "false";
+//        try {
+//            response = new ObjectMapper().writeValueAsString(courseService.getList());            
+//        } catch (JsonProcessingException  e) {
+//        }
         return response;    
     }       
     
