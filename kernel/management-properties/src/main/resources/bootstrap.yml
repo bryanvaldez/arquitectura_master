@@ -1,0 +1,10 @@
+## YAML Template.
+---
+spring:
+  application:
+    name: conexion
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active: dev

@@ -1,0 +1,7 @@
+## YAML Template.
+---
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: @spring.profiles.active@
