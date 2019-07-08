@@ -47,7 +47,7 @@ public class ConsultaDao implements ConsultaDaoInterface {
             + " cp.codigo as recibo, "
             + " cp.monto as deuda, "
             + " cp.estado as estado "
-            + " FROM esq_ms_pago2109.TBL_CLIENTE"
+            + " FROM esqmicroservicios.TBL_CLIENTE c"
             + " INNER JOIN esqmicroservicios.TBL_CLIENTE_PRODUCTO cp on c.codigo = cp.cliente"
             + " INNER JOIN esqmicroservicios.TBL_PRODUCTO p on p.codigo = cp.producto";
     try {
