@@ -2,3 +2,8 @@ server:
   port: 8091
   servlet:
     context-path: /msbconsulta
+    
+ms-consulta:
+  ribbon:
+    listOfServers: http://localhost:8081, http://localhost:8082
+    

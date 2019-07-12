@@ -7,6 +7,7 @@ package com.app.msbconsulta.interfaces;
 
 import com.app.msbconsulta.objetos.ServicioDto;
 import java.util.List;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  * @author bvaldez
  */
-@FeignClient(name="ms-consulta", url="localhost:8081")
+//@FeignClient(name="ms-consulta", url="localhost:8081")
+@FeignClient(name="ms-consulta")
+@RibbonClient(name="ms-consulta")
 public interface ConsultaBusFeignInterface {
   
   @GetMapping(path="/msconsulta/servicios/consulta")
