@@ -17,4 +17,6 @@ public interface ConsultaDaoInterface {
   
   public List<Servicio> getServicios() throws AppException;
   
+  public List<Servicio> getServicios(Integer idCliente, Integer idEmpresa) throws AppException;  
+  
 }

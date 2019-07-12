@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface ConsultaRestControllerInterface {
   public List<ServicioDto> getServicios();
+  public List<ServicioDto> getServicios(Integer idCliente, Integer idEmpresa);    
 }

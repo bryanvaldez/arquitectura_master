@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface ConsultaServiceInterface {
   public List<Servicio> getServicios() throws AppException;
+  public List<Servicio> getServicios(Integer idCliente, Integer idEmpresa) throws AppException;    
 }

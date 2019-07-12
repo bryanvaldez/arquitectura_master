@@ -77,4 +77,53 @@ public class ConsultaDao implements ConsultaDaoInterface {
     return servicios;
   }
 
+  @Override
+  public List<Servicio> getServicios(Integer idCliente, Integer idEmpresa) throws AppException {
+    List<Servicio> servicios = new ArrayList<>();
+    Conexion con = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    try {con = new Conexion();} catch (Exception e) {throw new AppException(e.getMessage());}
+    String SQL = "SELECT "+
+    "c.codigo as cliente, "+
+    "c.nombres as nombres, "+
+    "p.codigo as producto, "+
+    "p.descripcion as descripcion, "+
+    "p.precio as precio, "+
+    "cp.codigo as recibo, "+
+    "cp.monto as deuda, "+
+    "cp.estado as estado "+
+    "FROM esqmicroservicios.TBL_CLIENTE c "+
+    "INNER JOIN esqmicroservicios.TBL_CLIENTE_PRODUCTO cp on c.codigo =  cp.cliente "+
+    "INNER JOIN esqmicroservicios.TBL_PRODUCTO p on p.codigo = cp.producto "+
+    "and c.codigo = ? and c.empresa = ? ";
+            
+    try {
+      con.getConexion().setAutoCommit(false);
+      pstmt = con.getConexion().prepareStatement(SQL);
+      pstmt.setInt(1, idCliente);
+      pstmt.setInt(2, idEmpresa);
+      rs = pstmt.executeQuery();
+      con.getConexion().commit();
+      while (rs.next()) {
+        Servicio servicio = new Servicio();
+        servicio.setCodigo(rs.getInt("recibo"));
+        servicio.setEstado(rs.getString("estado"));
+        servicio.setCliente(new Cliente(rs.getInt("cliente"), rs.getString("nombres")));
+        servicio.setProducto(new Producto(rs.getInt("producto"), rs.getString("descripcion")));
+        servicio.setMonto(rs.getInt("deuda"));
+        servicios.add(servicio);
+        servicio = null;
+      }        
+      
+    } catch (Exception e) {
+      throw new AppException(e.getMessage());
+    } finally{
+      try{ con.closeResources(con.getConexion(), rs, null, null, pstmt); }catch(Exception e){e.printStackTrace();}
+    }
+    return servicios;    
+  }
+  
+
+
 }

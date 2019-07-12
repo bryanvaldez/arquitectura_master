@@ -15,5 +15,6 @@ import java.util.List;
 public interface ConsultaBusProxyInterface {
   
   public List<ServicioDto> getServicios();
+  public List<ServicioDto> getServicios(Integer idCliente, Integer idEmpresa);
   
 }

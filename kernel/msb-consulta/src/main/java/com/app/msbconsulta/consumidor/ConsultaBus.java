@@ -26,6 +26,7 @@ import org.springframework.web.client.RestTemplate;
 public class ConsultaBus implements ConsultaBusProxyInterface{
   
   private static String URL ="http://localhost:8081/msconsulta/servicios/consulta";
+  private static String URL2 ="http://localhost:8081/msconsulta/facturacion/idCliente/{idCliente}/idEmpresa/{idEmpresa}";  
 
   @Override
   public List<ServicioDto> getServicios() {    
@@ -33,6 +34,19 @@ public class ConsultaBus implements ConsultaBusProxyInterface{
     Map<String, Integer> uriVariables = new HashMap<>();
     ResponseEntity<List<ServicioDto>> responseEntity = new RestTemplate().exchange(URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<ServicioDto>>(){}, uriVariables);
     
+    if(responseEntity != null && responseEntity.hasBody()){
+      servicios = responseEntity.getBody();
+    }
+    return servicios;
+  }
+
+  @Override
+  public List<ServicioDto> getServicios(Integer idCliente, Integer idEmpresa) {
+    List<ServicioDto> servicios = new ArrayList<>();
+    Map<String, Integer> uriVariables = new HashMap<>();
+    uriVariables.put("idCliente", idCliente);
+    uriVariables.put("idEmpresa", idEmpresa);
+    ResponseEntity<List<ServicioDto>> responseEntity = new RestTemplate().exchange(URL2, HttpMethod.GET, null, new ParameterizedTypeReference<List<ServicioDto>>(){}, uriVariables);
     if(responseEntity != null && responseEntity.hasBody()){
       servicios = responseEntity.getBody();
     }

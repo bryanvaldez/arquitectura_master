@@ -28,5 +28,10 @@ public class ConsultaService implements ConsultaServiceInterface{
   public List<Servicio> getServicios() throws AppException {
     return consultaDao.getServicios();
   }
+
+  @Override
+  public List<Servicio> getServicios(Integer idCliente, Integer idEmpresa) throws AppException {
+    return consultaDao.getServicios(idCliente, idEmpresa);
+  }
   
 }
