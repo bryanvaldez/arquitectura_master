@@ -39,7 +39,7 @@ public class ConsultaRestController implements ConsultaRestControllerInterface{
     } catch (Exception e) {
       e.printStackTrace();
     }
-    
+    System.out.println("MS-CONSULTA2:8082");
     return lstServiciosDto;
   }
 
@@ -53,6 +53,7 @@ public class ConsultaRestController implements ConsultaRestControllerInterface{
       lstServiciosDto = Convert.passLstServicioBeanToServicioDto(lstServicios);
     } catch (AppException e) {
     }
+    System.out.println("MS-CONSULTA2:8082");
     return lstServiciosDto;
   }
   

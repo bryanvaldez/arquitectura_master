@@ -1,17 +1,17 @@
-package com.app.msbconsulta;
+package com.app.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
+@EnableZuulProxy
 @EnableDiscoveryClient
-@EnableFeignClients("com.app.msbconsulta.interfaces")
-public class MsbConsultaApplication {
+public class ApigatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsbConsultaApplication.class, args);
+		SpringApplication.run(ApigatewayApplication.class, args);
 	}
 
 }
