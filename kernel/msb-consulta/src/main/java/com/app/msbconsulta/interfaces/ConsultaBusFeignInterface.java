@@ -16,14 +16,15 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  * @author bvaldez
  */
-//@FeignClient(name="ms-consulta", url="localhost:8081")
-@FeignClient(name="ms-consulta")
+//@FeignClient(name="ms-consulta", url="localhost:8081") //conexion manual 
+//@FeignClient(name="ms-consulta") //conexion directa con el microservicio
+@FeignClient(name="apigateway")
 @RibbonClient(name="ms-consulta")
 public interface ConsultaBusFeignInterface {
   
-  @GetMapping(path="/msconsulta/servicios/consulta")
+  @GetMapping(path="/ms-consulta/msconsulta/servicios/consulta")
   public List<ServicioDto> getServicios();
   
-  @GetMapping(path="/msconsulta/facturacion/idCliente/{idCliente}/idEmpresa/{idEmpresa}")
+  @GetMapping(path="/ms-consulta/msconsulta/facturacion/idCliente/{idCliente}/idEmpresa/{idEmpresa}")
   public List<ServicioDto> getServicios(@PathVariable("idCliente") Integer idCliente, @PathVariable("idEmpresa") Integer idEmpresa);  
 }
