@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author Bryan Valdez <Bryan at ibryan.valdez@gmail.com>
  */
 //@FeignClient(name="ms-pago", url="http://localhost:8085")
-@FeignClient(name="apigateway")
+@FeignClient(name="ms-pago")
 @RibbonClient(name="ms-pago")
 public interface PayBusFeignInterface {
 
-  @PutMapping(path="/ms-pago/mspago/servicio/pagar")
+  @PutMapping(path="/mspago/servicio/pagar")
   public Transaction payService(@RequestBody ServicioDto servicioDto);
 
 }
