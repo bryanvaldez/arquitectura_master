@@ -9,9 +9,9 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.app</groupId>
-  <artifactId>ms-pago</artifactId>
+  <artifactId>ms-pago2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ms-pago</name>
+  <name>ms-pago2</name>
   <description>Demo project for Spring Boot</description>
 
   <properties>
@@ -32,7 +32,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
@@ -52,7 +51,7 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>            
+    </dependency>           
   </dependencies>
   <dependencyManagement>
     <dependencies>

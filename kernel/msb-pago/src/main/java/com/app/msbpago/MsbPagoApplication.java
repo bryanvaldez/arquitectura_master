@@ -1,15 +1,17 @@
-package com.app.mspago;
+package com.app.msbpago;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients("com.app.msbpago.interfaces")
 @EnableDiscoveryClient
-public class MsPagoApplication {
+public class MsbPagoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsPagoApplication.class, args);
+		SpringApplication.run(MsbPagoApplication.class, args);
 	}
 
 }
