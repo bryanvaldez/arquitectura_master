@@ -11,11 +11,13 @@ import com.netflix.zuul.exception.ZuulException;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Bryan Valdez <Bryan at ibryan.valdez@gmail.com>
  */
+@Component
 public class ZuulLoggingFilter extends ZuulFilter {
 
   private Logger logger = LoggerFactory.getLogger(this.getClass());
