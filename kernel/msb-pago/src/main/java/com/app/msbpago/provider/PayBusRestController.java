@@ -10,6 +10,8 @@ import com.app.msbpago.interfaces.PayBusProxyInterface;
 import com.app.msbpago.objects.AppException;
 import com.app.msbpago.objects.ServicioDto;
 import com.app.msbpago.objects.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class PayBusRestController {
+  
+  private Logger logger = LoggerFactory.getLogger(this.getClass());  
   
   @Autowired
   private PayBusProxyInterface payBusProxy;
@@ -41,7 +45,10 @@ public class PayBusRestController {
   
   @PutMapping(path="/servicio/feign/pagar")
   public Transaction payServiceFeign(@RequestBody ServicioDto servicioDto){
-    return PayBusFeign.payService(servicioDto);
+    Transaction tx = new Transaction();        
+    tx = PayBusFeign.payService(servicioDto);
+    logger.info("MSB-PAGO - {}", tx);
+    return tx;
   }  
   
 }
